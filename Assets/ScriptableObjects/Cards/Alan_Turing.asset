@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 780355f28cd1d5048a60c49768aad02a, type: 3}
+  m_Name: Alan_Turing
+  m_EditorClassIdentifier: 
+  name: Alan Turing
+  description: "Voc\xEA usa computador? Foda-se, seu filho da puta. Essa carta te
+    torna ateu e homossexual"
+  artwork: {fileID: 21300000, guid: 7efa38fdc4f73694d808b807ebcdb1dd, type: 3}
+  type: 1
+  manaCost: 4
+  attack: 0
+  health: 0
