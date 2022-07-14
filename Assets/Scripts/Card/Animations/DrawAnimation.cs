@@ -39,7 +39,7 @@ public class DrawAnimation : MonoBehaviour {
 
                 float lastCardWidth = lastCard.GetComponent<RectTransform>().rect.width;
                 float lastCardScale = lastCard.transform.localScale.x;
-                float xPosition = ((lastCardWidth * lastCardScale) / 2) + lastCard.transform.position.x;
+                float xPosition = ((lastCardWidth * lastCardScale) / 1.5f) + lastCard.transform.position.x;
                 newPosition = new Vector3(xPosition, lastCard.transform.position.y, 0);
             }
 

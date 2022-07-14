@@ -1051,7 +1051,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 10
+  m_Spacing: -50
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -1201,6 +1201,7 @@ MonoBehaviour:
   playerHand: {fileID: 973663773}
   card_MinionPrefab: {fileID: 6039036878385581754, guid: ba5b47fcb8b557a4aa85e0d0bfb76b93, type: 3}
   card_SpellPrefab: {fileID: 2735351644022030443, guid: 1c2ecd49556800c4fb6c0c37ac5bbd69, type: 3}
+  drawAnimation: {fileID: 0}
 --- !u!1 &1378953269
 GameObject:
   m_ObjectHideFlags: 0

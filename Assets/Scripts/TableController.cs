@@ -9,7 +9,8 @@ public class TableController : MonoBehaviour {
 
     [SerializeField] private GameObject card_MinionPrefab;
     [SerializeField] private GameObject card_SpellPrefab;
-    
+
+    [SerializeField] private PlayerDeck playerDeck;
     [SerializeField] private DrawAnimation drawAnimation;
 
     void Awake() {
@@ -19,8 +20,14 @@ public class TableController : MonoBehaviour {
         drawAnimation.playerHand = playerHand;
     }
 
+    void Start() {
+        playerDeck = new PlayerDeck();
+    }
+
     public void DrawCard() {
-        Card card = Database.GetRandomCard();
+        if (!playerDeck.VerifyIfDeckHasCard()) return;
+
+        Card card = playerDeck.DrawCard();
 
         GameObject cardObject = null;
         switch (card.type) {
@@ -37,9 +44,8 @@ public class TableController : MonoBehaviour {
     }
 
     public void DrawCards(int count) {
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < count; i++)
             DrawCard();
-        }
     }
 
     public void EraseHand() {
