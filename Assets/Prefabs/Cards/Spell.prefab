@@ -653,7 +653,6 @@ GameObject:
   - component: {fileID: 2735351644022030440}
   - component: {fileID: 2735351644022030446}
   - component: {fileID: 2735351644022030441}
-  - component: {fileID: 2735351644022030447}
   - component: {fileID: 8389743033725521471}
   - component: {fileID: 5417322383458916091}
   - component: {fileID: 8773361611636072381}
@@ -708,6 +707,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4aef17d77341514f81e192c172776de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultParent: {fileID: 0}
+  placeholderParent: {fileID: 0}
+  placeholder: {fileID: 0}
   card: {fileID: 0}
   nameText: {fileID: 2735351643665944638}
   descriptionText: {fileID: 2735351642549898636}
@@ -715,21 +717,6 @@ MonoBehaviour:
   attackText: {fileID: 0}
   healthText: {fileID: 0}
   artwork: {fileID: 2735351642821924181}
---- !u!114 &2735351644022030447
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2735351644022030443}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbe7f5c945954de4ab972cef88cfcaf4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultParent: {fileID: 0}
-  placeholderParent: {fileID: 0}
-  placeholder: {fileID: 0}
   scaleMultiplier: 1.1
 --- !u!114 &8389743033725521471
 MonoBehaviour:

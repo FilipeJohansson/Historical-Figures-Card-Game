@@ -10,8 +10,8 @@ public class TableController : MonoBehaviour {
     [SerializeField] private GameObject card_MinionPrefab;
     [SerializeField] private GameObject card_SpellPrefab;
 
-    [SerializeField] private PlayerDeck playerDeck;
-    [SerializeField] private DrawAnimation drawAnimation;
+    private PlayerDeck playerDeck;
+    private DrawAnimation drawAnimation;
 
     void Awake() {
         drawAnimation = (new GameObject("Draw Animation")).AddComponent<DrawAnimation>();

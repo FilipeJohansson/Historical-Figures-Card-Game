@@ -6,21 +6,21 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
         // Debug.Log("OnPointerEnter");
         if (!eventData.pointerDrag) return;
 
-        Draggable draggable = eventData.pointerDrag.GetComponent<Draggable>();
-        if (draggable != null) draggable.placeholderParent = transform;
+        CardController card = eventData.pointerDrag.GetComponent<CardController>();
+        if (card != null) card.placeholderParent = transform;
     }
 
     public void OnPointerExit(PointerEventData eventData) {
         // Debug.Log("OnPointerExit");
         if (!eventData.pointerDrag) return;
 
-        Draggable draggable = eventData.pointerDrag.GetComponent<Draggable>();
-        if (draggable != null && draggable.placeholderParent == transform) draggable.placeholderParent = draggable.defaultParent;
+        CardController card = eventData.pointerDrag.GetComponent<CardController>();
+        if (card != null && card.placeholderParent == transform) card.placeholderParent = card.defaultParent;
     }
     public void OnDrop(PointerEventData eventData) {
         // Debug.Log(eventData.pointerDrag.name + " was dropped on " + gameObject.name);
 
-        Draggable draggable = eventData.pointerDrag.GetComponent<Draggable>();
-        if (draggable != null) draggable.defaultParent = transform;
+        CardController card = eventData.pointerDrag.GetComponent<CardController>();
+        if (card != null) card.defaultParent = transform;
     }
 }
