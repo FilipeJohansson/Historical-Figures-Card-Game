@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 780355f28cd1d5048a60c49768aad02a, type: 3}
-  m_Name: Alan_Turing
+  m_Name: Karl_Marx
   m_EditorClassIdentifier: 
-  id: 0002
-  name: Alan Turing
-  description: "Voc\xEA usa computador? Foda-se, seu filho da puta. Essa carta te
-    torna ateu e homossexual"
-  artwork: {fileID: 21300000, guid: 7efa38fdc4f73694d808b807ebcdb1dd, type: 3}
+  id: 0003
+  name: Karl Marx
+  description: "Esta carta n\xE3o faz nada"
+  artwork: {fileID: 21300000, guid: c09070bbea4b9824b89eead2f6f71aff, type: 3}
   type: 1
-  manaCost: 4
+  manaCost: 10
   attack: 0
   health: 0

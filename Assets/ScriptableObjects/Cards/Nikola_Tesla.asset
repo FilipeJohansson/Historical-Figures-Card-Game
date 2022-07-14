@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 780355f28cd1d5048a60c49768aad02a, type: 3}
-  m_Name: Nikola Tesla
+  m_Name: Nikola_Tesla
   m_EditorClassIdentifier: 
+  id: 0001
   name: Nikola Tesla
   description: "Inventor, engenheiro eletrot\xE9cnico e engenheiro mec\xE2nico s\xE9rvio"
   artwork: {fileID: 21300000, guid: 95a8acb5e1771564399509b6aafc1918, type: 3}
+  type: 0
   manaCost: 5
   attack: 2
   health: 4

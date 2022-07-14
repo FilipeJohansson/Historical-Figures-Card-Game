@@ -1,14 +1,15 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Card", menuName = "Card")]
+[CreateAssetMenu(fileName = "New Card", menuName = "Assets/New Card")]
 public class Card : ScriptableObject {
-    [SerializeField] public new string name;
-    [SerializeField] public string description;
-    [SerializeField] public Sprite artwork;
+    public string id;
+    public new string name;
+    [TextArea] public string description;
+    public Sprite artwork;
 
-    [SerializeField] public CardType type;
+    public CardType type;
 
-    [SerializeField] public int manaCost;
-    [SerializeField] public int attack;
-    [SerializeField] public int health;
+    public int manaCost;
+    public int attack;
+    public int health;
 }

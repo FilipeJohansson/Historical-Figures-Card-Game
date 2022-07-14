@@ -2,7 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class CardDisplay : MonoBehaviour {
+public class CardController : MonoBehaviour {
 
     [SerializeField] private Card card;
 
@@ -14,7 +14,7 @@ public class CardDisplay : MonoBehaviour {
 
     [SerializeField] private Image artwork;
 
-    void Awake() {
+    void Start() {
         nameText.text = card.name;
         descriptionText.text = card.description;
         manaCostText.text = card.manaCost.ToString();
@@ -24,5 +24,9 @@ public class CardDisplay : MonoBehaviour {
 
         attackText.text = card.attack.ToString();
         healthText.text = card.health.ToString();
+    }
+
+    public void SetCard(Card card) {
+        this.card = card;
     }
 }
