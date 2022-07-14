@@ -269,7 +269,6 @@ GameObject:
   - component: {fileID: 473437367}
   - component: {fileID: 473437366}
   - component: {fileID: 473437365}
-  - component: {fileID: 473437364}
   m_Layer: 5
   m_Name: Draw Card Button
   m_TagString: Untagged
@@ -297,21 +296,6 @@ RectTransform:
   m_AnchoredPosition: {x: 2, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &473437364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 473437362}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8602bf1e34f43ed488ffbf267c394334, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHand: {fileID: 973663773}
-  card_MinionPrefab: {fileID: 6039036878385581754, guid: ba5b47fcb8b557a4aa85e0d0bfb76b93, type: 3}
-  card_SpellPrefab: {fileID: 2735351644022030443, guid: 1c2ecd49556800c4fb6c0c37ac5bbd69, type: 3}
 --- !u!114 &473437365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,7 +340,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 473437364}
+      - m_Target: {fileID: 1373770417}
         m_TargetAssemblyTypeName: TableController, Assembly-CSharp
         m_MethodName: DrawCard
         m_Mode: 1
@@ -567,7 +551,6 @@ GameObject:
   - component: {fileID: 659437909}
   - component: {fileID: 659437908}
   - component: {fileID: 659437907}
-  - component: {fileID: 659437906}
   m_Layer: 5
   m_Name: Draws 5 Cards Button
   m_TagString: Untagged
@@ -595,21 +578,6 @@ RectTransform:
   m_AnchoredPosition: {x: -181, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &659437906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 659437904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8602bf1e34f43ed488ffbf267c394334, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHand: {fileID: 973663773}
-  card_MinionPrefab: {fileID: 6039036878385581754, guid: ba5b47fcb8b557a4aa85e0d0bfb76b93, type: 3}
-  card_SpellPrefab: {fileID: 2735351644022030443, guid: 1c2ecd49556800c4fb6c0c37ac5bbd69, type: 3}
 --- !u!114 &659437907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -654,7 +622,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 659437906}
+      - m_Target: {fileID: 1373770417}
         m_TargetAssemblyTypeName: TableController, Assembly-CSharp
         m_MethodName: DrawCards
         m_Mode: 3
@@ -1103,6 +1071,78 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 675c433fb37cc20478ef4c6a10ef1587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1117089285
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1117089286}
+  m_Layer: 5
+  m_Name: Draw Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1117089286
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117089285}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1745882551}
+  - {fileID: 1207200204}
+  m_Father: {fileID: 1373770416}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1207200203
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1207200204}
+  m_Layer: 5
+  m_Name: Camera Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1207200204
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207200203}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1117089286}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 330, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1373770415
 GameObject:
   m_ObjectHideFlags: 0
@@ -1112,8 +1152,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1373770416}
+  - component: {fileID: 1373770417}
   m_Layer: 5
-  m_Name: Distribution
+  m_Name: Table
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1134,6 +1175,7 @@ RectTransform:
   - {fileID: 905913734}
   - {fileID: 1626729075}
   - {fileID: 973663774}
+  - {fileID: 1117089286}
   m_Father: {fileID: 1749041643}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1142,6 +1184,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1373770417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373770415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8602bf1e34f43ed488ffbf267c394334, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drawSpawn_voidPoint: {fileID: 1745882550}
+  drawSpawn_cameraPoint: {fileID: 1207200203}
+  playerHand: {fileID: 973663773}
+  card_MinionPrefab: {fileID: 6039036878385581754, guid: ba5b47fcb8b557a4aa85e0d0bfb76b93, type: 3}
+  card_SpellPrefab: {fileID: 2735351644022030443, guid: 1c2ecd49556800c4fb6c0c37ac5bbd69, type: 3}
 --- !u!1 &1378953269
 GameObject:
   m_ObjectHideFlags: 0
@@ -1301,6 +1360,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 675c433fb37cc20478ef4c6a10ef1587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1745882550
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1745882551}
+  m_Layer: 5
+  m_Name: Void Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1745882551
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745882550}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1117089286}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 650, y: -150}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1749041639
 GameObject:
   m_ObjectHideFlags: 0
@@ -1550,7 +1644,6 @@ GameObject:
   - component: {fileID: 2088598821}
   - component: {fileID: 2088598820}
   - component: {fileID: 2088598819}
-  - component: {fileID: 2088598818}
   m_Layer: 5
   m_Name: Erase Hand Button
   m_TagString: Untagged
@@ -1578,21 +1671,6 @@ RectTransform:
   m_AnchoredPosition: {x: 184, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2088598818
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2088598816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8602bf1e34f43ed488ffbf267c394334, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHand: {fileID: 973663773}
-  card_MinionPrefab: {fileID: 6039036878385581754, guid: ba5b47fcb8b557a4aa85e0d0bfb76b93, type: 3}
-  card_SpellPrefab: {fileID: 2735351644022030443, guid: 1c2ecd49556800c4fb6c0c37ac5bbd69, type: 3}
 --- !u!114 &2088598819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1637,7 +1715,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2088598818}
+      - m_Target: {fileID: 1373770417}
         m_TargetAssemblyTypeName: TableController, Assembly-CSharp
         m_MethodName: EraseHand
         m_Mode: 1
