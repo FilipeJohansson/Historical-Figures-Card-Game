@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler {
+public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler {
     [HideInInspector] public Transform defaultParent = null;
     [HideInInspector] public Transform placeholderParent = null;
 
@@ -114,5 +114,17 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         Destroy(placeholder);
 
         GetComponent<CanvasGroup>().blocksRaycasts = true;
+    }
+
+    public void OnPointerEnter(PointerEventData eventData) {
+        // Debug.Log("OnPointerEnter");
+        // Increase card size
+        transform.localScale *= scaleMultiplier;
+    }
+
+    public void OnPointerExit(PointerEventData eventData) {
+        // Debug.Log("OnPointerExit");
+        // Decrease card size
+        transform.localScale /= scaleMultiplier;
     }
 }

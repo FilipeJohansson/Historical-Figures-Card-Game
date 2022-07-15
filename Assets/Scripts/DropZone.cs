@@ -17,6 +17,7 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
         CardController card = eventData.pointerDrag.GetComponent<CardController>();
         if (card != null && card.placeholderParent == transform) card.placeholderParent = card.defaultParent;
     }
+    
     public void OnDrop(PointerEventData eventData) {
         // Debug.Log(eventData.pointerDrag.name + " was dropped on " + gameObject.name);
 

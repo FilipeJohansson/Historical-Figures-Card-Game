@@ -10,7 +10,6 @@ public class TableController : MonoBehaviour {
     [SerializeField] private GameObject card_MinionPrefab;
     [SerializeField] private GameObject card_SpellPrefab;
 
-    private PlayerDeck playerDeck;
     private DrawAnimation drawAnimation;
 
     void Awake() {
@@ -20,14 +19,10 @@ public class TableController : MonoBehaviour {
         drawAnimation.playerHand = playerHand;
     }
 
-    void Start() {
-        playerDeck = new PlayerDeck();
-    }
-
     public void DrawCard() {
-        if (!playerDeck.VerifyIfDeckHasCard()) return;
+        if (!GameManager.playerDeck.VerifyIfDeckHasCard()) return;
 
-        Card card = playerDeck.DrawCard();
+        Card card = GameManager.playerDeck.DrawCard();
 
         GameObject cardObject = null;
         switch (card.type) {

@@ -15,18 +15,30 @@ public class PlayerDeck {
         for (int i = 0; i < MAX_CARDS; i++)
             deck.Push(Database.GetRandomCard());
 
-        Debug.Log("PlayerDeck: " + deck.Count);
+        // Debug.Log("PlayerDeck: " + deck.Count);
     }
 
     public Card DrawCard() {
         Card card = deck.Pop();
 
-        Debug.Log("PlayerDeck: " + deck.Count);
-        Debug.Log("Card: " + card.id + ", " + card.name);
+        // Debug.Log("PlayerDeck: " + deck.Count);
+        // Debug.Log("Card: " + card.id + ", " + card.name);
         return card;
     }
 
     public bool VerifyIfDeckHasCard() {
         return deck.Count > 0;
+    }
+
+    public void AddCardToDeck(Card card) {
+        deck.Push(card);
+    }
+
+    public int GetCardsInDeck() {
+        return deck.Count;
+    }
+    
+    public int GetMaxCards() {
+        return MAX_CARDS;
     }
 }
