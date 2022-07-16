@@ -18,6 +18,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     [SerializeField] private TMP_Text healthText;
 
     [SerializeField] private Image artwork;
+    [SerializeField] private Image glow;
 
     private Camera _mainCamera;
     
@@ -41,6 +42,14 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
         attackText.text = card.attack.ToString();
         healthText.text = card.health.ToString();
+    }
+
+    void FixedUpdate() {
+        if(GameManager.ManaController.GetMana() < card.manaCost) {
+            glow.enabled = false;
+            return;
+        }
+        glow.enabled = true;
     }
 
     public void SetCard(Card card) {
@@ -126,5 +135,9 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         // Debug.Log("OnPointerExit");
         // Decrease card size
         transform.localScale /= scaleMultiplier;
+    }
+
+    public int GetManaCost() {
+        return card.manaCost;
     }
 }

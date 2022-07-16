@@ -20,9 +20,9 @@ public class TableController : MonoBehaviour {
     }
 
     public void DrawCard() {
-        if (!GameManager.playerDeck.VerifyIfDeckHasCard()) return;
+        if (!GameManager.PlayerDeck.VerifyIfDeckHasCard()) return;
 
-        Card card = GameManager.playerDeck.DrawCard();
+        Card card = GameManager.PlayerDeck.DrawCard();
 
         GameObject cardObject = null;
         switch (card.type) {

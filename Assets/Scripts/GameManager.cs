@@ -4,22 +4,26 @@ using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
-    public static GameManager instance;
-    public static PlayerDeck playerDeck;
+    public static GameManager Instance;
+    public static PlayerDeck PlayerDeck;
+    public static ManaController ManaController;
+    public static TableController TableController;
+
+    public ManaController manaController;
 
     [SerializeField] private TMP_Text _text_DeckQuantity;
 
-
     void Awake() {
-        if (instance == null) {
-            instance = this;
+        if (Instance == null) {
+            Instance = this;
             DontDestroyOnLoad(gameObject);
         } else
             Destroy(gameObject);
     }
 
     void Start() {
-        playerDeck = new PlayerDeck();
+        ManaController = manaController;
+        PlayerDeck = new PlayerDeck();
 
         UpdateCardsQuantityInDeck();
     }
@@ -29,6 +33,14 @@ public class GameManager : MonoBehaviour {
     }
 
     private void UpdateCardsQuantityInDeck() {
-        _text_DeckQuantity.text = playerDeck.GetCardsInDeck() + "/" + playerDeck.GetMaxCards();
+        _text_DeckQuantity.text = PlayerDeck.GetCardsInDeck() + "/" + PlayerDeck.GetMaxCards();
+    }
+
+    public int GetMana() {
+        return ManaController.GetMana();
+    }
+
+    public void SpendMana(int amount) {
+        ManaController.SpendMana(amount);
     }
 }
