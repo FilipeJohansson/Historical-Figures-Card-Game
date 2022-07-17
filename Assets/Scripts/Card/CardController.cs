@@ -20,6 +20,8 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     [SerializeField] private Image artwork;
     [SerializeField] private Image glow;
 
+    [SerializeField] private bool inField = false;
+
     private Camera _mainCamera;
     
     private Vector3 previousPosition;
@@ -45,6 +47,8 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     }
 
     void FixedUpdate() {
+        if (inField) return;
+
         if(GameManager.ManaController.GetMana() < card.manaCost) {
             glow.enabled = false;
             return;
@@ -58,6 +62,8 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public void OnBeginDrag(PointerEventData eventData) {
         // Debug.Log("OnBeginDrag");
+        if (inField) return;
+
         defaultParent = transform.parent;
         transform.SetParent(defaultParent.parent);
 
@@ -81,6 +87,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public void OnDrag(PointerEventData eventData) {
         // Debug.Log("OnDrag");
+        if (inField) return;
 
         transform.position = eventData.position;
 
@@ -112,13 +119,16 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     }
 
     public void OnEndDrag(PointerEventData eventData) {
-        // Debug.Log("OnEndDrag");
+        Debug.Log("OnEndDrag");
 
         transform.SetParent(defaultParent);
 
-        transform.localScale /= scaleMultiplier;
+        if (!inField)
+            transform.localScale /= scaleMultiplier;
+            
         transform.rotation = Quaternion.Euler(0, 0, 0);
 
+        if (!placeholder) return;
         transform.SetSiblingIndex(placeholder.transform.GetSiblingIndex());
         Destroy(placeholder);
 
@@ -127,17 +137,30 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public void OnPointerEnter(PointerEventData eventData) {
         // Debug.Log("OnPointerEnter");
+        if (inField) return;
+        
         // Increase card size
         transform.localScale *= scaleMultiplier;
     }
 
     public void OnPointerExit(PointerEventData eventData) {
         // Debug.Log("OnPointerExit");
+        if (inField) return;
+
         // Decrease card size
         transform.localScale /= scaleMultiplier;
     }
 
     public int GetManaCost() {
         return card.manaCost;
+    }
+
+    public void DroppedInField() {
+        inField = true;
+        glow.enabled = false;
+    }
+
+    public bool GetInField() {
+        return inField;
     }
 }

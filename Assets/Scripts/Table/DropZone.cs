@@ -23,12 +23,13 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
     }
     
     public void OnDrop(PointerEventData eventData) {
-        // Debug.Log(eventData.pointerDrag.name + " was dropped on " + gameObject.name);
+        Debug.Log(eventData.pointerDrag.name + " was dropped on " + gameObject.name);
 
         CardController card = eventData.pointerDrag.GetComponent<CardController>();
         if (GameManager.ManaController.GetMana() < card.GetManaCost()) return;
 
         if (card != null) card.defaultParent = transform;
         GameManager.ManaController.SpendMana(card.GetManaCost());
+        card.DroppedInField();
     }
 }

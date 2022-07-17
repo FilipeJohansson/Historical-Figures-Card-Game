@@ -7,6 +7,8 @@ public class HandZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
         if (!eventData.pointerDrag) return;
 
         CardController card = eventData.pointerDrag.GetComponent<CardController>();
+        if (card.GetInField()) return;
+
         if (card != null) card.placeholderParent = transform;
     }
 
@@ -15,6 +17,8 @@ public class HandZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
         if (!eventData.pointerDrag) return;
 
         CardController card = eventData.pointerDrag.GetComponent<CardController>();
+        if (card.GetInField()) return;
+
         if (card != null && card.placeholderParent == transform) card.placeholderParent = card.defaultParent;
     }
     
@@ -22,6 +26,8 @@ public class HandZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
         // Debug.Log(eventData.pointerDrag.name + " was dropped on " + gameObject.name);
 
         CardController card = eventData.pointerDrag.GetComponent<CardController>();
+        if (card.GetInField()) return;
+
         if (card != null) card.defaultParent = transform;
     }
 }
