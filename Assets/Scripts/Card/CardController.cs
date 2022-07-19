@@ -23,7 +23,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     [SerializeField] private Image artwork;
     [SerializeField] private Image glow;
 
-    public bool inField = false;
+    [SerializeField] public bool inField { get; private set; } = false;
 
     private Camera _mainCamera;
     
@@ -163,9 +163,5 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         glow.enabled = false;
 
         card.actions.ForEach(action => action.Cast());
-    }
-
-    public bool GetInField() {
-        return inField;
     }
 }
