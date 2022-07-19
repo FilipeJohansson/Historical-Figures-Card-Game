@@ -15,9 +15,11 @@ MonoBehaviour:
   id: 0002
   name: Alan Turing
   description: "Voc\xEA usa computador? Foda-se, seu filho da puta. Essa carta te
-    torna ateu e homossexual"
+    torna ateu e homossexual e te d\xE1 3 de mana"
   artwork: {fileID: 21300000, guid: 7efa38fdc4f73694d808b807ebcdb1dd, type: 3}
   type: 1
-  manaCost: 4
+  manaCost: 0
   attack: 0
   health: 0
+  actions:
+  - {fileID: 3237930486145591048, guid: 96e1c6260d89dc54db6f32fa8e691aa5, type: 3}

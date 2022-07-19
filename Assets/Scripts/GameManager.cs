@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
     public static TableController TableController;
 
     public ManaController manaController;
+    public TableController tableController;
 
     [SerializeField] private TMP_Text _text_DeckQuantity;
 
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour {
     }
 
     void Start() {
+        TableController = tableController;
         ManaController = manaController;
         PlayerDeck = new PlayerDeck();
 

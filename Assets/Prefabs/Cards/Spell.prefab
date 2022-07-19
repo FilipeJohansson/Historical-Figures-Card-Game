@@ -794,6 +794,9 @@ MonoBehaviour:
   defaultParent: {fileID: 0}
   placeholderParent: {fileID: 0}
   placeholder: {fileID: 0}
+  onFieldDrop:
+    m_PersistentCalls:
+      m_Calls: []
   card: {fileID: 0}
   nameText: {fileID: 2735351643665944638}
   descriptionText: {fileID: 2735351642549898636}
@@ -802,6 +805,7 @@ MonoBehaviour:
   healthText: {fileID: 0}
   artwork: {fileID: 2735351642821924181}
   glow: {fileID: 467360688940289285}
+  inField: 0
   scaleMultiplier: 1.1
 --- !u!114 &8389743033725521471
 MonoBehaviour:

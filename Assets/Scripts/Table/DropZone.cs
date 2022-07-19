@@ -26,9 +26,11 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
         Debug.Log(eventData.pointerDrag.name + " was dropped on " + gameObject.name);
 
         CardController card = eventData.pointerDrag.GetComponent<CardController>();
+        if (card == null) return;
+        if (card.inField) return;
         if (GameManager.ManaController.GetMana() < card.GetManaCost()) return;
 
-        if (card != null) card.defaultParent = transform;
+        card.defaultParent = transform;
         GameManager.ManaController.SpendMana(card.GetManaCost());
         card.DroppedInField();
     }

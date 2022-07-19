@@ -2076,6 +2076,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manaController: {fileID: 1163750046}
+  tableController: {fileID: 1373770417}
   _text_DeckQuantity: {fileID: 444098784}
 --- !u!1 &1419197527
 GameObject:

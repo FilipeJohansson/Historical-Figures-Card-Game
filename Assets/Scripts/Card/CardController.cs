@@ -2,12 +2,15 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.Events;
 
 public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler {
     [HideInInspector] public Transform defaultParent = null;
     [HideInInspector] public Transform placeholderParent = null;
 
     [HideInInspector] public GameObject placeholder = null;
+
+    public UnityEvent onFieldDrop = new UnityEvent();
 
     [SerializeField] private Card card;
 
@@ -20,7 +23,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     [SerializeField] private Image artwork;
     [SerializeField] private Image glow;
 
-    [SerializeField] private bool inField = false;
+    public bool inField = false;
 
     private Camera _mainCamera;
     
@@ -158,6 +161,8 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     public void DroppedInField() {
         inField = true;
         glow.enabled = false;
+
+        card.actions.ForEach(action => action.Cast());
     }
 
     public bool GetInField() {
