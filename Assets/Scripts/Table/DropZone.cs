@@ -31,7 +31,7 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
         if (GameManager.ManaController.GetMana() < card.GetManaCost()) return;
 
         card.defaultParent = transform;
-        GameManager.ManaController.SpendMana(card.GetManaCost());
+        GameManager.SpendMana(card.GetManaCost());
         card.OnFieldDrop.Invoke();
     }
 }

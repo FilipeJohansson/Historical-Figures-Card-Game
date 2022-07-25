@@ -38,11 +38,11 @@ public class GameManager : MonoBehaviour {
         _text_DeckQuantity.text = PlayerDeck.GetCardsInDeck() + "/" + PlayerDeck.GetMaxCards();
     }
 
-    public int GetMana() {
+    public static int GetMana() {
         return ManaController.GetMana();
     }
 
-    public void SpendMana(int amount) {
+    public static void SpendMana(int amount) {
         ManaController.SpendMana(amount);
     }
 }
