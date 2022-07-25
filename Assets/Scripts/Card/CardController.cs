@@ -10,7 +10,6 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     [HideInInspector] public GameObject placeholder = null;
 
-    public UnityEvent onFieldDrop = new UnityEvent();
 
     [SerializeField] private Card card;
 
@@ -26,11 +25,13 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     [SerializeField] public bool inField { get; private set; } = false;
 
     private Camera _mainCamera;
-    
+
     private Vector3 previousPosition;
     private Rigidbody2D _rigidbody;
 
-    [Range(1f, 1.5f)] [SerializeField] private float scaleMultiplier = 1.1f;
+    [Range(1f, 1.5f)][SerializeField] private float scaleMultiplier = 1.1f;
+
+    public UnityEvent OnFieldDrop = new UnityEvent();
 
     void Awake() {
         _mainCamera = Camera.main;
@@ -38,6 +39,13 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     }
 
     void Start() {
+        OnFieldDrop.AddListener(() => {
+            inField = true;
+            glow.enabled = false;
+
+            card.actions.ForEach(action => action.Cast());
+        });
+
         nameText.text = card.name;
         descriptionText.text = card.description;
         manaCostText.text = card.manaCost.ToString();
@@ -52,7 +60,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     void FixedUpdate() {
         if (inField) return;
 
-        if(GameManager.ManaController.GetMana() < card.manaCost) {
+        if (GameManager.ManaController.GetMana() < card.manaCost) {
             glow.enabled = false;
             return;
         }
@@ -128,7 +136,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
         if (!inField)
             transform.localScale /= scaleMultiplier;
-            
+
         transform.rotation = Quaternion.Euler(0, 0, 0);
 
         if (!placeholder) return;
@@ -141,7 +149,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     public void OnPointerEnter(PointerEventData eventData) {
         // Debug.Log("OnPointerEnter");
         if (inField) return;
-        
+
         // Increase card size
         transform.localScale *= scaleMultiplier;
     }
@@ -156,12 +164,5 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public int GetManaCost() {
         return card.manaCost;
-    }
-
-    public void DroppedInField() {
-        inField = true;
-        glow.enabled = false;
-
-        card.actions.ForEach(action => action.Cast());
     }
 }
