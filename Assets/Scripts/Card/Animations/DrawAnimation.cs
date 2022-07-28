@@ -48,12 +48,12 @@ public class DrawAnimation : MonoBehaviour {
             newPosition = new Vector3(xPosition, lastCard.transform.position.y, 0);
         }
 
+        yield return new WaitForSeconds(1f);
+
+        cardSequence.Append(card.transform.DOMove(newPosition, .5f))
+        .Append(card.transform.DOScale(normalScale, .5f));
+
         yield return new WaitForSeconds(.5f);
-
-        cardSequence.Append(card.transform.DOMove(newPosition, .4f))
-        .Append(card.transform.DOScale(normalScale, .4f));
-
-        yield return new WaitForSeconds(.4f);
 
         card.transform.SetParent(playerHand.transform);
     }
