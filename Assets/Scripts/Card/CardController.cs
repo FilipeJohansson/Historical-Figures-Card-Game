@@ -130,7 +130,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     }
 
     public void OnEndDrag(PointerEventData eventData) {
-        Debug.Log("OnEndDrag");
+        // Debug.Log("OnEndDrag");
 
         transform.SetParent(defaultParent);
 
