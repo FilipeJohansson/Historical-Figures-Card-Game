@@ -1,21 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ManaController : MonoBehaviour {
-    const int MAX_MANA = 10;
+    const int MAX_MANA = 6;
     
     private GameObject[] crystals = new GameObject[MAX_MANA];
 
-    public int mana;
+    [HideInInspector] public int mana;
+
+    [SerializeField] private GameObject _crystalPrefab;
+    [SerializeField] private Transform _crystalsTransform;
+    [SerializeField] private TMP_Text _quantityText;
+
 
     // Start is called before the first frame update
     void Awake() {
         mana = MAX_MANA / 2;
 
-        // Get childrens of crystals and store them in an array
-        for (int i = 0; i < transform.childCount; i++) {
-            crystals[i] = transform.GetChild(i).gameObject;
+        var crystalRect = _crystalPrefab.GetComponent<RectTransform>();
+        var crystalHeight = 45f;
+        for (int i = 0; i < MAX_MANA; i++) {
+            crystals[i] = Instantiate(_crystalPrefab, _crystalsTransform);
+            crystals[i].transform.localPosition = new Vector3(0, crystalHeight, 0);
+            
+            crystalHeight += (-crystalRect.sizeDelta.y * crystalRect.localScale.y) - 3;
+        }
+
+        // Get children of crystals and store them in an array
+        for (int i = 0; i < _crystalsTransform.childCount; i++) {
+            crystals[i] = _crystalsTransform.GetChild(i).gameObject;
         }
 
         // Update the mana crystals
@@ -64,5 +79,7 @@ public class ManaController : MonoBehaviour {
             else
                 crystals[i].SetActive(false);
         }
+
+        _quantityText.text = mana + "/" + MAX_MANA;
     }
 }

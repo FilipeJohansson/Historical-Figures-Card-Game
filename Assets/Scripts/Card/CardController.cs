@@ -10,65 +10,70 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     [HideInInspector] public GameObject placeholder = null;
 
+    public GameObject sprite;
 
-    [SerializeField] private Card card;
+    [SerializeField] private Card _card;
 
-    [SerializeField] private TMP_Text nameText;
-    [SerializeField] private TMP_Text descriptionText;
-    [SerializeField] private TMP_Text manaCostText;
-    [SerializeField] private TMP_Text attackText;
-    [SerializeField] private TMP_Text healthText;
+    [SerializeField] private TMP_Text _nameText;
+    [SerializeField] private TMP_Text _descriptionText;
+    [SerializeField] private TMP_Text _manaCostText;
+    [SerializeField] private TMP_Text _attackText;
+    [SerializeField] private TMP_Text _healthText;
 
-    [SerializeField] private Image artwork;
-    [SerializeField] private Image glow;
+    [SerializeField] private Image _artwork;
+    [SerializeField] private Image _glow;
 
     [SerializeField] public bool inField { get; private set; } = false;
 
     private Camera _mainCamera;
 
-    private Vector3 previousPosition;
+    private Vector3 _previousPosition;
     private Rigidbody2D _rigidbody;
 
-    [Range(1f, 1.5f)][SerializeField] private float scaleMultiplier = 1.1f;
+    [Range(1f, 1.5f)][SerializeField] private float _scaleMultiplier = 1.1f;
 
     public UnityEvent OnFieldDrop = new UnityEvent();
+
+    private OnHandHoverAnimation _hoverAnimation;
 
     void Awake() {
         _mainCamera = Camera.main;
         _rigidbody = GetComponent<Rigidbody2D>();
+
+        _hoverAnimation = (new GameObject("On Hand Hover Animation")).AddComponent<OnHandHoverAnimation>();
     }
 
     void Start() {
         OnFieldDrop.AddListener(() => {
             inField = true;
-            glow.enabled = false;
+            _glow.enabled = false;
 
-            card.actions.ForEach(action => action.Cast());
+            _card.actions.ForEach(action => action.Cast());
         });
 
-        nameText.text = card.name;
-        descriptionText.text = card.description;
-        manaCostText.text = card.manaCost.ToString();
-        artwork.sprite = card.artwork;
+        _nameText.text = _card.name;
+        _descriptionText.text = _card.description;
+        _manaCostText.text = _card.manaCost.ToString();
+        _artwork.sprite = _card.artwork;
 
-        if (card.type == CardType.Spell) return;
+        if (_card.type == CardType.Spell) return;
 
-        attackText.text = card.attack.ToString();
-        healthText.text = card.health.ToString();
+        _attackText.text = _card.attack.ToString();
+        _healthText.text = _card.health.ToString();
     }
 
     void FixedUpdate() {
         if (inField) return;
 
-        if (GameManager.ManaController.GetMana() < card.manaCost) {
-            glow.enabled = false;
+        if (GameManager.ManaController.GetMana() < _card.manaCost) {
+            _glow.enabled = false;
             return;
         }
-        glow.enabled = true;
+        _glow.enabled = true;
     }
 
     public void SetCard(Card card) {
-        this.card = card;
+        this._card = card;
     }
 
     public void OnBeginDrag(PointerEventData eventData) {
@@ -78,7 +83,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         defaultParent = transform.parent;
         transform.SetParent(defaultParent.parent);
 
-        transform.localScale *= scaleMultiplier;
+        transform.localScale *= _scaleMultiplier;
 
         placeholder = new GameObject();
         placeholder.transform.SetParent(defaultParent);
@@ -103,8 +108,8 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         transform.position = eventData.position;
 
         Vector3 newWorldPosition = _mainCamera.ScreenToWorldPoint(eventData.position);
-        var velocity = (newWorldPosition - previousPosition).magnitude / Time.deltaTime;
-        previousPosition = newWorldPosition;
+        var velocity = (newWorldPosition - _previousPosition).magnitude / Time.deltaTime;
+        _previousPosition = newWorldPosition;
 
         var angle = Mathf.Atan2(-newWorldPosition.x * velocity, newWorldPosition.y * velocity) * Mathf.Rad2Deg;
         _rigidbody.MoveRotation(angle);
@@ -135,7 +140,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         transform.SetParent(defaultParent);
 
         if (!inField)
-            transform.localScale /= scaleMultiplier;
+            transform.localScale /= _scaleMultiplier;
 
         transform.rotation = Quaternion.Euler(0, 0, 0);
 
@@ -151,7 +156,8 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         if (inField) return;
 
         // Increase card size
-        transform.localScale *= scaleMultiplier;
+        _hoverAnimation.CardHoverEnter(this, _scaleMultiplier);
+        // transform.localScale *= _scaleMultiplier;
     }
 
     public void OnPointerExit(PointerEventData eventData) {
@@ -159,10 +165,11 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         if (inField) return;
 
         // Decrease card size
-        transform.localScale /= scaleMultiplier;
+        _hoverAnimation.CardHoverExit(this, _scaleMultiplier);
+        // transform.localScale /= _scaleMultiplier;
     }
 
     public int GetManaCost() {
-        return card.manaCost;
+        return _card.manaCost;
     }
 }

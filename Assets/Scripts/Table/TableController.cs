@@ -2,21 +2,21 @@ using UnityEngine;
 
 public class TableController : MonoBehaviour {
 
-    [SerializeField] private GameObject drawSpawn_voidPoint;
-    [SerializeField] private GameObject drawSpawn_cameraPoint;
+    [SerializeField] private GameObject _drawSpawn_voidPoint;
+    [SerializeField] private GameObject _drawSpawn_cameraPoint;
 
-    [SerializeField] private GameObject playerHand;
+    [SerializeField] private GameObject _playerHand;
 
-    [SerializeField] private GameObject card_MinionPrefab;
-    [SerializeField] private GameObject card_SpellPrefab;
+    [SerializeField] private GameObject _card_MinionPrefab;
+    [SerializeField] private GameObject _card_SpellPrefab;
 
-    private DrawAnimation drawAnimation;
+    private DrawAnimation _drawAnimation;
 
     void Awake() {
-        drawAnimation = (new GameObject("Draw Animation")).AddComponent<DrawAnimation>();
-        drawAnimation.voidPoint = drawSpawn_voidPoint;
-        drawAnimation.cameraPoint = drawSpawn_cameraPoint;
-        drawAnimation.playerHand = playerHand;
+        _drawAnimation = (new GameObject("Draw Animation")).AddComponent<DrawAnimation>();
+        _drawAnimation.voidPoint = _drawSpawn_voidPoint;
+        _drawAnimation.cameraPoint = _drawSpawn_cameraPoint;
+        _drawAnimation.playerHand = _playerHand;
     }
 
     public void DrawCard() {
@@ -27,15 +27,15 @@ public class TableController : MonoBehaviour {
         GameObject cardObject = null;
         switch (card.type) {
             case CardType.Minion:
-                cardObject = Instantiate(card_MinionPrefab, drawSpawn_voidPoint.transform);
+                cardObject = Instantiate(_card_MinionPrefab, _drawSpawn_voidPoint.transform);
                 break;
             case CardType.Spell:
-                cardObject = Instantiate(card_SpellPrefab, drawSpawn_voidPoint.transform);
+                cardObject = Instantiate(_card_SpellPrefab, _drawSpawn_voidPoint.transform);
                 break;
         }
         cardObject.GetComponent<CardController>().SetCard(card);
 
-        drawAnimation.CardSummon();
+        _drawAnimation.CardSummon();
     }
 
     public void DrawCards(int count) {
@@ -44,7 +44,7 @@ public class TableController : MonoBehaviour {
     }
 
     public void EraseHand() {
-        foreach (Transform child in playerHand.transform)
+        foreach (Transform child in _playerHand.transform)
             Destroy(child.gameObject);
     }
 }
