@@ -34,13 +34,20 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public UnityEvent OnFieldDrop = new UnityEvent();
 
+    private GameObject _hoverAnimationObject;
+
     private OnHandHoverAnimation _hoverAnimation;
 
     void Awake() {
         _mainCamera = Camera.main;
         _rigidbody = GetComponent<Rigidbody2D>();
 
-        _hoverAnimation = (new GameObject("On Hand Hover Animation")).AddComponent<OnHandHoverAnimation>();
+        _hoverAnimationObject = new GameObject("On Hand Hover Animation");
+        _hoverAnimation = _hoverAnimationObject.AddComponent<OnHandHoverAnimation>();
+    }
+
+    void OnDestroy() {
+        Destroy(_hoverAnimationObject);
     }
 
     void Start() {

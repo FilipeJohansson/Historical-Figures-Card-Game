@@ -19,19 +19,19 @@ public class ManaController : MonoBehaviour {
     void Awake() {
         mana = MAX_MANA / 2;
 
-        var crystalRect = _crystalPrefab.GetComponent<RectTransform>();
-        var crystalHeight = 100f;
-        for (int i = 0; i < MAX_MANA; i++) {
-            crystals[i] = Instantiate(_crystalPrefab, _crystalsTransform);
-            crystals[i].transform.localPosition = new Vector3(0, crystalHeight, 0);
+        // var crystalRect = _crystalPrefab.GetComponent<RectTransform>();
+        // var crystalHeight = 100f;
+        // for (int i = 0; i < MAX_MANA; i++) {
+        //     crystals[i] = Instantiate(_crystalPrefab, _crystalsTransform);
+        //     crystals[i].transform.localPosition = new Vector3(0, crystalHeight, 0);
             
-            crystalHeight += (-crystalRect.sizeDelta.y * crystalRect.localScale.y) - 3;
-        }
+        //     crystalHeight += (-crystalRect.sizeDelta.y * crystalRect.localScale.y) - 3;
+        // }
 
-        // Get children of crystals and store them in an array
-        for (int i = 0; i < _crystalsTransform.childCount; i++) {
-            crystals[i] = _crystalsTransform.GetChild(i).gameObject;
-        }
+        // // Get children of crystals and store them in an array
+        // for (int i = 0; i < _crystalsTransform.childCount; i++) {
+        //     crystals[i] = _crystalsTransform.GetChild(i).gameObject;
+        // }
 
         // Update the mana crystals
         UpdateMana();
@@ -73,12 +73,12 @@ public class ManaController : MonoBehaviour {
     }
 
     private void UpdateMana() {
-        for (int i = 0; i < MAX_MANA; i++) {
-            if (i < mana)
-                crystals[i].SetActive(true);
-            else
-                crystals[i].SetActive(false);
-        }
+        // for (int i = 0; i < MAX_MANA; i++) {
+        //     if (i < mana)
+        //         crystals[i].SetActive(true);
+        //     else
+        //         crystals[i].SetActive(false);
+        // }
 
         _quantityText.text = mana + "/" + MAX_MANA;
     }

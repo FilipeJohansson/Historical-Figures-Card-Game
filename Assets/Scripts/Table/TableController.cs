@@ -1,4 +1,5 @@
 using UnityEngine;
+using Mirror;
 
 public class TableController : MonoBehaviour {
 
@@ -20,22 +21,26 @@ public class TableController : MonoBehaviour {
     }
 
     public void DrawCard() {
-        if (!GameManager.PlayerDeck.VerifyIfDeckHasCard()) return;
+        NetworkIdentity networkIdentity = NetworkClient.connection.identity;
+        GameManager gameManager = networkIdentity.GetComponent<GameManager>();
+        gameManager.CmdDrawCard();
 
-        Card card = GameManager.PlayerDeck.DrawCard();
+        // if (!GameManager.PlayerDeck.VerifyIfDeckHasCard()) return;
 
-        GameObject cardObject = null;
-        switch (card.type) {
-            case CardType.Minion:
-                cardObject = Instantiate(_card_MinionPrefab, _drawSpawn_voidPoint.transform);
-                break;
-            case CardType.Spell:
-                cardObject = Instantiate(_card_SpellPrefab, _drawSpawn_voidPoint.transform);
-                break;
-        }
-        cardObject.GetComponent<CardController>().SetCard(card);
+        // Card card = GameManager.PlayerDeck.DrawCard();
 
-        _drawAnimation.CardSummon();
+        // GameObject cardObject = null;
+        // switch (card.type) {
+        //     case CardType.Minion:
+        //         cardObject = Instantiate(_card_MinionPrefab, _drawSpawn_voidPoint.transform);
+        //         break;
+        //     case CardType.Spell:
+        //         cardObject = Instantiate(_card_SpellPrefab, _drawSpawn_voidPoint.transform);
+        //         break;
+        // }
+        // cardObject.GetComponent<CardController>().SetCard(card);
+
+        // _drawAnimation.CardSummon();
     }
 
     public void DrawCards(int count) {

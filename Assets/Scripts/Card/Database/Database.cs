@@ -7,6 +7,8 @@ public class Database : MonoBehaviour {
 
     private static Database _instance;
 
+    [SerializeField] private List<Card> cards;
+
     void Awake() {
         if (_instance == null) {
             _instance = this;
@@ -20,7 +22,7 @@ public class Database : MonoBehaviour {
             if (cardDatabase == null) Debug.LogError("CardDatabase not found!");
         }
 
-        List<Card> cards = GetAllCards();
+        cards = GetAllCards();
         Debug.Log("Found " + cards.Count + " cards in the database.");
 
         if(!VerifyIfIdIsUnique()) Debug.LogError("There are duplicate IDs in the database!");
