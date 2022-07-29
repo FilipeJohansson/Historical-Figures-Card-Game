@@ -20,7 +20,7 @@ public class ManaController : MonoBehaviour {
         mana = MAX_MANA / 2;
 
         var crystalRect = _crystalPrefab.GetComponent<RectTransform>();
-        var crystalHeight = 45f;
+        var crystalHeight = 100f;
         for (int i = 0; i < MAX_MANA; i++) {
             crystals[i] = Instantiate(_crystalPrefab, _crystalsTransform);
             crystals[i].transform.localPosition = new Vector3(0, crystalHeight, 0);

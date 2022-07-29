@@ -30,7 +30,7 @@ public class DrawAnimation : MonoBehaviour {
         GameObject card = voidPoint.transform.GetChild(0).gameObject;
         card.transform.SetParent(cameraPoint.transform);
         var normalScale = card.transform.localScale;
-        card.transform.localScale = new Vector3(.33f, .33f, .33f);
+        card.transform.localScale = new Vector3(1f, 1f, 1f);
 
         var cardSequence = DOTween.Sequence();
 
@@ -44,7 +44,7 @@ public class DrawAnimation : MonoBehaviour {
 
             float lastCardWidth = lastCard.GetComponent<RectTransform>().rect.width;
             float lastCardScale = lastCard.transform.localScale.x;
-            float xPosition = ((lastCardWidth * lastCardScale) / 1.5f) + lastCard.transform.position.x;
+            float xPosition = ((lastCardWidth * lastCardScale) / 3f) + lastCard.transform.position.x;
             newPosition = new Vector3(xPosition, lastCard.transform.position.y, 0);
         }
 
